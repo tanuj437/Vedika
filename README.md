@@ -17,11 +17,11 @@ Vedika is a comprehensive toolkit for Sanskrit text processing, offering deep le
 ## Installation
 
 ```bash
-# Install from PyPI
+# Install from PyPI (soon)
 pip install vedika
 
 # Install from source
-git clone https://github.com/username/vedika.git
+git clone https://github.com/tanuj437/vedika.git
 cd vedika
 pip install -e .
 ```
