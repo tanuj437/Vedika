@@ -19,7 +19,7 @@ try:
 except ImportError:
     # Fallback for standalone usage
     try:
-        from sentence_splitter import split_sentences
+        from .sentence_splitter import split_sentences
     except ImportError:
         split_sentences = None
 

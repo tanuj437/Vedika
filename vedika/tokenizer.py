@@ -4,9 +4,9 @@ from typing import List, Optional, Dict, Any, Union, Tuple
 from dataclasses import dataclass
 from pathlib import Path
 
-from sandhi_split import SanskritSplit
-from normalizer import TextNormalizer
-from sentence_splitter import SentenceSplitter
+from .sandhi_split import SanskritSplit
+from .normalizer import TextNormalizer
+from .sentence_splitter import SentenceSplitter
 
 
 @dataclass

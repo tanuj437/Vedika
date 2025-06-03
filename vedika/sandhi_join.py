@@ -272,7 +272,7 @@ class SandhiJoiner:
         >>> print(result)  # "रामास्ति" (or appropriate sandhi form)
     """
     
-    def __init__(self, model_path: Union[str, Path] = "data/sandhi_joiner.pth", device: Optional[str] = None):
+    def __init__(self, model_path: Union[str, Path] = ".data/sandhi_joiner.pth", device: Optional[str] = None):
         """
         Initialize the Sanskrit Sandhi Joiner.
         

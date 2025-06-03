@@ -213,7 +213,7 @@ class SanskritSplit:
         device (str, optional): Device to use ('cuda', 'cpu', or 'auto')
     """
     
-    def __init__(self, model_path: str = "data/sandhi_split.pth", device: Optional[str] = None):
+    def __init__(self, model_path: str = ".data/sandhi_split.pth", device: Optional[str] = None):
         """Initialize the Sanskrit sandhi splitter."""
         if device is None or device == 'auto':
             self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

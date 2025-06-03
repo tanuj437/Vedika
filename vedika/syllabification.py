@@ -106,7 +106,7 @@ class SanskritMetrics:
         
         # Try to load cleaned_metres.json automatically
         try:
-            loaded_meters = self._load_meter_data("data/cleaned_metres.json")
+            loaded_meters = self._load_meter_data(".data/cleaned_metres.json")
             self.meter_data.update(loaded_meters)
         except Exception as e:
             logger.warning(f"Could not load cleaned_metres.json: {e}. Using default meters only.")

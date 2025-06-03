@@ -11,13 +11,16 @@ Features:
 - Sentence splitting
 - Tokenization
 
-Author: Your Name
-Version: 1.0.0
+Author: Tanuj Saxena and Soumya Sharma
+Version: 0.0.1
 License: MIT
 """
-from utils.download import get_file
+from .utils.download import get_file
 
-model_path = get_file("sandhi_split")
+
+get_file("sandhi_split")
+get_file("sandhi_joiner")
+get_file("cleaned_metres")
 
 from .normalizer import TextNormalizer, normalize_standard_sanskrit_text, normalize_vedic_sanskrit_text
 from .sandhi_split import SanskritSplit, split_word, split_words
@@ -27,8 +30,8 @@ from .sentence_splitter import SentenceSplitter, split_sentences
 from .tokenizer import SanskritTokenizer, TokenizerConfig
 
 __version__ = "1.0.0"
-__author__ = "Your Name"
-__email__ = "your.email@example.com"
+__author__ = "Tsnuj Saxena, Soumya Sharma"
+__email__ = "tanuj.saxena.rks@gmail.com, soumyasharma1599@gmail.com"
 __license__ = "MIT"
 __description__ = "A comprehensive toolkit for Sanskrit text processing"
 
