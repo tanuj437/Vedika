@@ -141,7 +141,7 @@ If you use Vedika in your research, please cite:
   title={Vedika: A Sanskrit Text Processing Toolkit},
   author={Saxena, Tanuj and Sharma, Soumya},
   year={2025},
-  url={https://github.com/username/vedika}
+  url={https://github.com/tanuj437/vedika}
 }
 ```
 
