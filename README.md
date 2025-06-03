@@ -1,0 +1,2 @@
+# Vedika
+SanskritNLP Toolkit
