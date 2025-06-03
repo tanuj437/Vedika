@@ -1,1 +1,4 @@
 /vedika/data/*
+build/
+*.egg-info/
+dist/

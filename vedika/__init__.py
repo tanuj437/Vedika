@@ -15,6 +15,9 @@ Author: Your Name
 Version: 1.0.0
 License: MIT
 """
+from utils.download import get_file
+
+model_path = get_file("sandhi_split")
 
 from .normalizer import TextNormalizer, normalize_standard_sanskrit_text, normalize_vedic_sanskrit_text
 from .sandhi_split import SanskritSplit, split_word, split_words

@@ -1,0 +1,2 @@
+exclude vedika/data/*.pth
+exclude vedika/data/*.json
