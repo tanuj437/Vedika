@@ -17,7 +17,7 @@ Vedika is a comprehensive toolkit for Sanskrit text processing, offering deep le
 ## Installation
 
 ```bash
-# Install from PyPI (
+# Install from PyPI
 pip install vedika
 
 ```
