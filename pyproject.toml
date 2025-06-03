@@ -5,6 +5,10 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "vedika"
 dynamic = ["version"]
+authors = [
+  {name = "Tanuj Saxena", email = "tanuj.saxena.rks@gmail.com"},
+  {name = "Soumya Sharma", email = "soumyasharma1599@gmail.com"},
+]
 description = "A comprehensive toolkit for Sanskrit text processing"
 requires-python = ">=3.8"
 dependencies = [
@@ -14,3 +18,9 @@ dependencies = [
     "tqdm>=4.62.0",
     "regex>=2021.8.3",
 ]
+readme = "README.rst"
+license = "MIT"
+license-files = ["LICEN[CS]E.*"]
+keywords=["Sanskrit","SanskritNLP","Sanskrit Toolkit","Toolkit"]
+
+
