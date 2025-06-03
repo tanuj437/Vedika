@@ -272,7 +272,7 @@ class SandhiJoiner:
         >>> print(result)  # "रामास्ति" (or appropriate sandhi form)
     """
     
-    def __init__(self, model_path: Union[str, Path] = ".data/sandhi_joiner.pth", device: Optional[str] = None):
+    def __init__(self, model_path: Optional[str] = None , device: Optional[str] = None):
         """
         Initialize the Sanskrit Sandhi Joiner.
         
@@ -284,6 +284,9 @@ class SandhiJoiner:
             FileNotFoundError: If model file doesn't exist
             RuntimeError: If model loading fails
         """
+        if model_path is None:
+        # Default to internal data path inside the vedika package
+            model_path = os.path.join(os.path.dirname(__file__), "data", "sandhi_joiner.pth")
         self.model_path = Path(model_path)
         self.device = device or ('cuda' if torch.cuda.is_available() else 'cpu')
         

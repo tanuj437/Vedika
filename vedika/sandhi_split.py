@@ -212,9 +212,13 @@ class SanskritSplit:
         model_path (str): Path to the trained model checkpoint
         device (str, optional): Device to use ('cuda', 'cpu', or 'auto')
     """
-    
-    def __init__(self, model_path: str = ".data/sandhi_split.pth", device: Optional[str] = None):
+       
+    def __init__(self, model_path: Optional[str] = None, device: Optional[str] = None):
         """Initialize the Sanskrit sandhi splitter."""
+        if model_path is None:
+        # Default to internal data path inside the vedika package
+            model_path = os.path.join(os.path.dirname(__file__), "data", "sandhi_split.pth")
+
         if device is None or device == 'auto':
             self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         else:

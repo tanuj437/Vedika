@@ -16,6 +16,7 @@ import logging
 from typing import List, Dict, Tuple, Any, Optional, Union
 from pathlib import Path
 import pkg_resources
+import os
 
 __version__ = "1.0.0"
 __author__ = "Tanuj Saxena and Soumya Sharma"
@@ -106,7 +107,9 @@ class SanskritMetrics:
         
         # Try to load cleaned_metres.json automatically
         try:
-            loaded_meters = self._load_meter_data(".data/cleaned_metres.json")
+            if model_path is None:
+                model_path = os.path.join(os.path.dirname(__file__), "data", "sandhi_joiner.pth")
+            loaded_meters = self._load_meter_data(model_path)
             self.meter_data.update(loaded_meters)
         except Exception as e:
             logger.warning(f"Could not load cleaned_metres.json: {e}. Using default meters only.")
