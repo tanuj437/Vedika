@@ -50,7 +50,7 @@ def _ensure_weights_downloaded():
 # Call when the package is imported
 _ensure_weights_downloaded()
 
-from .normalizer import TextNormalizer, normalize_standard_sanskrit_text, normalize_vedic_sanskrit_text
+from .normalizer import TextNormalizer, normalize_standard_sanskrit_text, normalize_vedic_sanskrit_text , remove_sanskrit_stopwords
 from .sandhi_split import SanskritSplit, split_word, split_words
 from .sandhi_join import SandhiJoiner, load_joiner, quick_join
 from .syllabification import SanskritMetrics, analyze_text
@@ -69,6 +69,7 @@ __all__ = [
     'TextNormalizer',
     'normalize_standard_sanskrit_text',
     'normalize_vedic_sanskrit_text',
+    'remove_sanskrit_stopwords',
     
     # Sandhi splitting
     'SanskritSplit',

@@ -77,6 +77,60 @@ VEDIC_ACCENT_MAPPINGS = {
 # Characters to keep when removing foreign characters
 ALLOWED_FOREIGN_CHARS = set('.,;:!?-—"\'()[]{}')
 
+# Core stopword list (can be extended)
+STOPWORDS = set([
+    'च', 'वा', 'अपि', 'तु', 'यदि', 'किन्तु', 'परन्तु', 'हि', 'अहम्', 'त्वम्', 'सः', 'सा', 'तत्',
+    'एतत्', 'इदम्', 'किम्', 'मम', 'तव', 'अस्माकम्', 'युष्माकम्', 'तेषाम्', 'तासाम्',
+    'अस्ति', 'सन्ति', 'भवति', 'भवन्ति', 'करोति', 'कुर्वन्ति', 'गच्छति', 'गच्छन्ति', 'तत्र', 'यत्र',
+    'कुत्र', 'अत्र', 'इह', 'एव', 'न', 'मा', 'ते', 'यदा', 'तदा', 'कदा', 'सदा', 'कदाचित्', 'इति', 'अथ',
+    'एव', 'खलु', 'वै', 'नाम', 'स्म', 'उ', 'आह', 'इत्यादि'
+])
+
+# Common punctuation and Devanagari marks
+SYMBOLS = set([
+    '.', ',', ';', ':', '!', '?', '(', ')', '[', ']', '{', '}', '।', '।।', '-', '"', "'", '`', '०','१','२','३','४','५','६','७','८','९'
+])
+
+
+def is_symbol(token: str) -> bool:
+    return token in SYMBOLS
+
+def is_stopword(token: str) -> bool:
+    return token in STOPWORDS
+
+def clean_token(token: str) -> str:
+    return token.strip("".join(SYMBOLS)).strip()
+
+# === Main Function ===
+
+def remove_sanskrit_stopwords(text: Union[str, List[str]]) -> Union[str, List[str]]:
+    """
+    Remove stopwords and common symbols from Sanskrit text.
+    
+    Args:
+        text (str or list): Input Sanskrit string or list of tokens
+    
+    Returns:
+        str or list: Cleaned text (same format as input)
+    
+    Example:
+        remove_sanskrit_stopwords("रामः च वनम् गच्छति ।")  -> "रामः वनम् गच्छति"
+    """
+    if isinstance(text, str):
+        tokens = text.split()
+        cleaned = [
+            clean_token(t) for t in tokens
+            if t and not is_stopword(t) and not is_symbol(t)
+        ]
+        return ' '.join([t for t in cleaned if t])
+    elif isinstance(text, list):
+        return [
+            clean_token(t) for t in text
+            if t and not is_stopword(t) and not is_symbol(t)
+        ]
+    else:
+        raise TypeError("Input must be a string or list of tokens.")
+
 
 # =========================== BASE CLEANERS ===============================
 
@@ -703,60 +757,6 @@ class TextNormalizer:
             **kwargs
         )
 
-
-# Core stopword list (can be extended)
-STOPWORDS = set([
-    'च', 'वा', 'अपि', 'तु', 'यदि', 'किन्तु', 'परन्तु', 'हि', 'अहम्', 'त्वम्', 'सः', 'सा', 'तत्',
-    'एतत्', 'इदम्', 'किम्', 'मम', 'तव', 'अस्माकम्', 'युष्माकम्', 'तेषाम्', 'तासाम्',
-    'अस्ति', 'सन्ति', 'भवति', 'भवन्ति', 'करोति', 'कुर्वन्ति', 'गच्छति', 'गच्छन्ति', 'तत्र', 'यत्र',
-    'कुत्र', 'अत्र', 'इह', 'एव', 'न', 'मा', 'ते', 'यदा', 'तदा', 'कदा', 'सदा', 'कदाचित्', 'इति', 'अथ',
-    'एव', 'खलु', 'वै', 'नाम', 'स्म', 'उ', 'आह', 'इत्यादि'
-])
-
-# Common punctuation and Devanagari marks
-SYMBOLS = set([
-    '.', ',', ';', ':', '!', '?', '(', ')', '[', ']', '{', '}', '।', '।।', '-', '"', "'", '`', '०','१','२','३','४','५','६','७','८','९'
-])
-
-
-def is_symbol(token: str) -> bool:
-    return token in SYMBOLS
-
-def is_stopword(token: str) -> bool:
-    return token in STOPWORDS
-
-def clean_token(token: str) -> str:
-    return token.strip("".join(SYMBOLS)).strip()
-
-# === Main Function ===
-
-def remove_sanskrit_stopwords(text: Union[str, List[str]]) -> Union[str, List[str]]:
-    """
-    Remove stopwords and common symbols from Sanskrit text.
-    
-    Args:
-        text (str or list): Input Sanskrit string or list of tokens
-    
-    Returns:
-        str or list: Cleaned text (same format as input)
-    
-    Example:
-        remove_sanskrit_stopwords("रामः च वनम् गच्छति ।")  -> "रामः वनम् गच्छति"
-    """
-    if isinstance(text, str):
-        tokens = text.split()
-        cleaned = [
-            clean_token(t) for t in tokens
-            if t and not is_stopword(t) and not is_symbol(t)
-        ]
-        return ' '.join([t for t in cleaned if t])
-    elif isinstance(text, list):
-        return [
-            clean_token(t) for t in text
-            if t and not is_stopword(t) and not is_symbol(t)
-        ]
-    else:
-        raise TypeError("Input must be a string or list of tokens.")
 
 
 def main():

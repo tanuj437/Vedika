@@ -12,10 +12,11 @@ from .sentence_splitter import SentenceSplitter
 @dataclass
 class TokenizerConfig:
     """Configuration for Sanskrit tokenizer"""
-    split_sandhi: bool = True
+    split_sandhi: bool = False
     normalize_text: bool = True
     handle_punctuation: bool = True
     preserve_sentence_boundaries: bool = True
+    remove_stopwords : bool = True
     max_word_length: int = 50
     min_word_length: int = 1
     logging_level: int = logging.INFO
