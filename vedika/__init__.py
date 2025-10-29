@@ -12,7 +12,7 @@ Features:
 - Tokenization
 
 Author: Tanuj Saxena and Soumya Sharma
-Version: 0.0.1
+Version: 0.1.0
 License: MIT
 """
 import os
@@ -26,8 +26,9 @@ def _ensure_weights_downloaded():
     os.makedirs(data_dir, exist_ok=True)
 
     required_files = {
-        "sandhi_joiner.pth": "Vedika/vedika/data/sandhi_joiner.pth",
-        "sandhi_split.pth": "Vedika/vedika/data/sandhi_split.pth",
+        "sp_unigram_64k.model": "Vedika/vedika/data/sp_unigram_64k.model",
+        "tf_checkpoint_joiner.pth": "Vedika/vedika/data/tf_checkpoint_joiner.pth",
+        "tf_checkpoint_split.pth": "Vedika/vedika/data/tf_checkpoint_split.pth",
         "cleaned_metres.json": "Vedika/vedika/data/cleaned_metres.json",
     }
 
@@ -51,13 +52,13 @@ def _ensure_weights_downloaded():
 _ensure_weights_downloaded()
 
 from .normalizer import TextNormalizer, normalize_standard_sanskrit_text, normalize_vedic_sanskrit_text , remove_sanskrit_stopwords
-from .sandhi_split import SanskritSplit, split_word, split_words
-from .sandhi_join import SandhiJoiner, load_joiner, quick_join
+from .sandhi_splitter import SanskritSplit, split_word, split_sentence
 from .syllabification import SanskritMetrics, analyze_text
 from .sentence_splitter import SentenceSplitter, split_sentences
 from .tokenizer import SanskritTokenizer, TokenizerConfig
+from .sandhi_joiner import SandhiJoiner, join_sandhi
 
-__version__ = "1.0.0"
+__version__ = "0.1.0"
 __author__ = "Tanuj Saxena, Soumya Sharma"
 __email__ = "tanuj.saxena.rks@gmail.com, soumyasharma1599@gmail.com"
 __license__ = "MIT"
@@ -74,13 +75,12 @@ __all__ = [
     # Sandhi splitting
     'SanskritSplit',
     'split_word',
-    'split_words',
+    'split_sentence',
     
     # Sandhi joining
     'SandhiJoiner',
-    'load_joiner',
-    'quick_join',
-    
+    'join_sandhi',
+
     # Syllabification
     'SanskritMetrics',
     'analyze_text',

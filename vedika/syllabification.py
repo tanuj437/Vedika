@@ -6,7 +6,7 @@ including syllable segmentation, prosodic weight determination, and meter identi
 Supports Vedic accent marks and various metrical patterns.
 
 Author: Tanuj Saxena and Soumya Sharma
-Version: 1.0.0
+Version: 0.1.0
 License: MIT
 """
 

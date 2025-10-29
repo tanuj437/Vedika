@@ -6,7 +6,7 @@ Handles Unicode normalization, script detection, diacritics, Vedic accents, and 
 
 Author: Tanuj Saxena and Soumya Sharma
 License: MIT License
-Version: 0.0.0
+Version: 0.1.0
 """
 
 import unicodedata
